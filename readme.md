@@ -1,1 +1,1 @@
-![Shopping App.jpg](..%2F..%2FDownloads%2FShopping%20App.jpg)
+![Shopping App](https://github.com/balajidontul/shopping-app-microservices/assets/83111706/da6ce16c-66b4-40dd-bb1a-21eae1681f40)
