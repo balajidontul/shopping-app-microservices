@@ -1,6 +1,10 @@
-![303569003-da6ce16c-66b4-40dd-bb1a-21eae1681f40](https://github.com/user-attachments/assets/10cb3a31-b6bd-492e-88ea-59d887412765.png =200x100)
+
 
 # Shopping App Microservices
+
+![303569003-da6ce16c-66b4-40dd-bb1a-21eae1681f40](https://github.com/user-attachments/assets/1949ace6-f1c0-49ce-a1e0-011f80013808)
+
+
 
 ## Overview
 The Shopping App Microservices project is a collection of microservices designed to handle various functionalities of an online shopping application. The project leverages Spring Boot for application development, Spring Cloud for service discovery and configuration management, and MySQL for database operations.
@@ -70,16 +74,6 @@ The Shopping App Microservices project is a collection of microservices designed
 ### Configuration
 Ensure you have a MySQL instance running and update the `application.properties` or `application.yml` files in each microservice with your MySQL configurations.
 
-## Contributing
-Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
-This project is licensed under the MIT License.
 
-## Contact
-For any questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
-
----
-
-**Note**: This document is a brief summary. For more detailed information, please refer to the individual microservice's documentation within their respective directories.
 
