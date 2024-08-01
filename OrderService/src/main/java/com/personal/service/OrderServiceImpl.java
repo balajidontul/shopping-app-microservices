@@ -87,13 +87,13 @@ public class OrderServiceImpl implements OrderService {
                 .build();
 
         OrderResponse.ProductDetails productDetails =
-                restTemplate.getForObject("http://PRODUCT-SERVICE/product/"+order.getProductId(),
+                restTemplate.getForObject("http://API-Gateway/product/"+order.getProductId(),
                         OrderResponse.ProductDetails.class);
 
         orderResponse.setProductDetails(productDetails);
 
         OrderResponse.PaymentDetails paymentDetails =
-                restTemplate.getForObject("http://PAYMENT-SERVICE/payment/"+order.getOrderid(),
+                restTemplate.getForObject("http://API-Gateway/payment/"+order.getOrderid(),
                         OrderResponse.PaymentDetails.class);
 
         orderResponse.setPaymentDetails(paymentDetails);

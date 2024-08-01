@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: API-Gateway
+  config:
+    import: configserver:http://localhost:9296
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: ORDER-SERVICE
+            uri: lb://ORDER-SERVICE
+            predicates:
+              - Path=/order/**
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: orderCircuitBreaker
+                  fallbackuri: forward:/orderServiceFallback
+          - id: PRODUCT-SERVICE
+            uri: lb://PRODUCT-SERVICE
+            predicates:
+              - Path=/product/**
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: productCircuitBreaker
+                  fallbackuri: forward:/productServiceFallback
+          - id: PAYMENT-SERVICE
+            uri: lb://PAYMENT-SERVICE
+            predicates:
+              - Path=/payment/**
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: paymentCircuitBreaker
+                  fallbackuri: forward:/paymentServiceFallback
+
+logging:
+  pattern:
+    level: "%5p[${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+server:
+  port: 9090
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+    instances:
+      orderCircuitBreaker:
+        baseConfig: default
+      productCircuitBreaker:
+        baseConfig: default
+      paymentCircuitBreaker:
+        baseConfig: default
